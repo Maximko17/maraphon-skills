@@ -1,0 +1,149 @@
+h2 {
+    color: #4a4848;
+}
+
+h4 {
+    color: #4a4848;
+}
+
+.register-top {
+    background-color: #6b6a6a;
+    height: 5vw;
+}
+
+.register-top h1 {
+    font-family: 'Open Sens Semibold', sans-serif;
+    color: white;
+    font-size: 30pt;
+    padding-top: 1%;
+    padding-left: 40px;
+    flex: 2;
+    padding-right: 50vw;
+}
+
+.register-back {
+    cursor: pointer;
+    height: 5vh;
+    width: 5vw;
+    border-radius: 10px;
+    font-size: 15pt;
+    margin-top: 2vh;
+    margin-left: 20px;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.button1 {
+    cursor: pointer;
+    border-radius: 20px;
+    height: 7.5vh;
+    width: 3.7vw;
+    margin-left: 15%;
+    margin-top: 1%;
+    background-color: rgba(237, 176, 33, 0.1);
+}
+
+.button2 {
+    cursor: pointer;
+    border-radius: 20px;
+    height: 7.5vh;
+    width: 3.7vw;
+    margin-left: 54%;
+    margin-top: 19%;
+    background-color: rgba(237, 176, 33, 0.1);
+}
+
+.button3 {
+    cursor: pointer;
+    border-radius: 20px;
+    height: 7.5vh;
+    width: 3.7vw;
+    margin-left: 48%;
+    margin-top: 5%;
+    background-color: rgba(237, 176, 33, 0.1);
+}
+
+.button4 {
+    cursor: pointer;
+    border-radius: 20px;
+    height: 7.5vh;
+    width: 3.7vw;
+    margin-left: 65%;
+    margin-top: 6%;
+    background-color: rgba(237, 176, 33, 0.1);
+}
+
+.button5 {
+    cursor: pointer;
+    border-radius: 20px;
+    height: 7.5vh;
+    width: 3.7vw;
+    margin-left: 51%;
+    margin-top: 2%;
+    background-color: rgba(237, 176, 33, 0.1);
+}
+
+.button6 {
+    cursor: pointer;
+    border-radius: 20px;
+    height: 7.5vh;
+    width: 3.7vw;
+    margin-left: 18%;
+    margin-top: 10%;
+    background-color: rgba(237, 176, 33, 0.1);
+}
+
+.button7 {
+    cursor: pointer;
+    border-radius: 20px;
+    height: 7.5vh;
+    width: 3.7vw;
+    margin-left: 9%;
+    margin-top: 13%;
+    background-color: rgba(237, 176, 33, 0.1);
+}
+
+.button8 {
+    cursor: pointer;
+    border-radius: 20px;
+    height: 7.5vh;
+    width: 3.7vw;
+    margin-left: 6%;
+    margin-top: 18%;
+    background-color: rgba(237, 176, 33, 0.1);
+}
+
+.buttonStart1 {
+    cursor: pointer;
+    color: green;
+    font-size: 17pt;
+    border-radius: 20px;
+    height: 8vh;
+    width: 4vw;
+    margin-left: 33%;
+    margin-top: 3%;
+    background-color: rgba(33, 235, 26, 0.7);
+}
+
+.buttonStart2 {
+    cursor: pointer;
+    color: green;
+    font-size: 17pt;
+    border-radius: 20px;
+    height: 8vh;
+    width: 4vw;
+    margin-left: 3vw;
+    background-color: rgba(33, 235, 26, 0.7);
+}
+
+.buttonStart3 {
+    cursor: pointer;
+    color: green;
+    font-size: 17pt;
+    border-radius: 20px;
+    height: 8vh;
+    width: 4vw;
+    background-color: rgba(33, 235, 26, 0.7);
+}

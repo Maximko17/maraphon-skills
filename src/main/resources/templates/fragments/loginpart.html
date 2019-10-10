@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+    <script th:src="@{/js/script.js}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:fragment="login-button">
+    <div th:if="${!#request.isUserInRole('RUNNER')and!#request.isUserInRole('COORDINATOR')and!#request.isUserInRole('ADMIN')}">
+        <form th:action="@{/login}">
+            <button type="submit" class="index-login-button">Войти</button>
+        </form>
+    </div>
+    <div th:if="${#request.isUserInRole('RUNNER')}">
+        <form th:action="@{/runner/main}">
+            <button type="submit" class="index-login-button">В меню бегуна</button>
+        </form>
+    </div>
+    <div th:if="${#request.isUserInRole('COORDINATOR')}">
+        <form th:action="@{/coordinator/main}">
+            <button type="submit" class="index-login-button" style="width: 15vw">В меню координатора</button>
+        </form>
+    </div>
+    <div th:if="${#request.isUserInRole('ADMIN')}">
+        <form th:action="@{/admin/main}">
+            <button type="submit" class="index-login-button" style="width: 15vw">В меню администратора</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

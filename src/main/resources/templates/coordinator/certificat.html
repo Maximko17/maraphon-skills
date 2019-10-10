@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/coordinatorstyle/runners.css}"/>
+</head>
+<body class="align">
+<div class="register-top flex-container">
+    <form th:action="@{/coordinator/runners}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="register-back" style="margin-right: 20px">Выйти</button>
+    </form>
+</div>
+
+<div class="register-middle">
+    <div style="height:10vh;background-color: #bab5b5">
+        <h4 style="padding-top: 3vh"><label>Здесь указаны все ваши сертификаты с прошлых гонок: </label></h4>
+    </div>
+
+    <div th:if="${#lists.size(regEvents)!=0}">
+        <div th:each="regEvent : ${regEvents}">
+
+            <img th:src="@{/images/logo-2016-full-colour.png}">
+
+            <div th:if="${regEvent.event.eventType=='Full Marathon'}">
+                <h4 th:text="${'Поздравляем '+registration.runner.email.firstName+' '+registration.runner.email.lastName+
+                    ' с участием в 42km полном марафоне.'+' Ваши результаты и время '+regEvent.raceTime+'сек. и занятое место '+regEvent.totalPlace}"></h4>
+            </div>
+
+            <div th:if="${regEvent.event.eventType=='Half Marathon'}">
+                <h4 th:text="${'Поздравляем '+registration.runner.email.firstName+' '+registration.runner.email.lastName+
+                ' с участием в 21km полумарафоне.'+' Ваши результаты и время '+regEvent.raceTime+'сек. и занятое место '+regEvent.totalPlace}"></h4>
+            </div>
+            <div th:if="${regEvent.event.eventType=='5km Fun Run'}">
+                <h4 th:text="${'Поздравляем '+registration.runner.email.firstName+' '+registration.runner.email.lastName+
+                ' с участием в 5km легком марафоне.'+' Ваши результаты и время '+regEvent.raceTime+'сек. и занятое место '+regEvent.totalPlace}"></h4>
+            </div>
+
+            <div style="display: flex">
+                <div style="margin-left: 25vw;">
+                    <h1 style="color: #4a4848">Сертификат участника</h1>
+                    <h4>В</h4>
+                    <h2 th:text="${regEvent.event.marathon.name}"></h2>
+                    <h3 style="color: #4a4848"
+                        th:text="${regEvent.event.marathon.city+','+regEvent.event.marathon.countryCode}"></h3>
+                    <h4 th:if="${totalSum==''}"
+                        th:text="${'Вы также заработали  для вашей благотворительной компании 0$'}"></h4>
+                    <h4 th:unless="${totalSum==''}"
+                        th:text="${'Вы также заработали  для вашей благотворительной компании '+totalSum+'$'}"></h4>
+                </div>
+                <div style="width: 400px;text-align: left;">
+                    <img style="width: 60%;"
+                         th:src="@{/images/depositphotos_124334428-stock-illustration-green-tick-check-mark-icon.jpg}">
+                </div>
+            </div>
+            <div style="background-color: gold;height: 2vh;margin-top: 5vh"></div>
+        </div>
+    </div>
+    <div style="margin-top: 30vh;" th:unless="${#lists.size(regEvents)!=0}">
+        <h4><b>У вас пока нет сертификатов</b></h4>
+    </div>
+</div>
+
+
+</body>
+</html>

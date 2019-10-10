@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/coordinatorstyle/runners.css}"/>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/admin/main}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="register-back" style="margin-right: 20px">Выйти</button>
+    </form>
+</div>
+
+<div class="register-middle">
+    <h2 style="margin-top: 5vh">Управление волонтерами</h2>
+
+    <div class="flex-container">
+        <div style="margin-left: 20vw;">
+            <h3 style="color:#6b6a6a;">Сортировка и филитрация</h3>
+
+            <form th:action="@{/admin/sortVolunteers}" method="post" class="flex-container" style="margin-top: 3vh">
+                <div class="text-right">
+                    <h4><label>Сортировать по:</label></h4><br>
+                </div>
+
+                <div class="text-left">
+                    <select id="selectSort" name="selectSort" class="input-field1">
+                        <option>Фамилия</option>
+                        <option>Имя</option>
+                        <option>Страна</option>
+                    </select><br/>
+
+                    <button type="submit" class="btn" style="margin-top: 2vh;margin-left: 2vw; border: 1px solid">
+                        Обновить
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div style="margin-left: 20vw">
+            <h3 style="color:#6b6a6a;">Загрузка</h3>
+
+            <form th:action="@{/admin/uploadVolunteers}" style=";margin-top: 3vh">
+                <button type="submit" class="btn" style="border: 1px solid">Загрузка волонтеров</button>
+            </form>
+        </div>
+    </div>
+
+    <div th:if="${#lists.size(volunteers)!=0}">
+        <p><h4><b th:text="${'Всего волонтеров: '+#lists.size(volunteers)}"></b></h4></p>
+        <table class="table table-striped table-bordered" style="width: 80vw;margin-left: 10vw;">
+            <thead style="background-color: #797979">
+            <tr>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Страна</th>
+                <th>Пол</th>
+            </tr>
+            </thead>
+            <tr th:each="volunteer : ${volunteers}">
+                <td th:text="${volunteer.lastName}">Tasty Goodnees 3</td>
+                <td th:text="${volunteer.firstName}">Tasty Goodnees 3</td>
+                <td th:text="${volunteer.countryCode}"></td>
+                <td th:text="${volunteer.gender}"></td>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-top: 10vh;" th:unless="${#lists.size(volunteers)!=0}">
+        <h4><b>Ничего не найдено</b></h4>
+    </div>
+</div>
+
+</body>
+</html>

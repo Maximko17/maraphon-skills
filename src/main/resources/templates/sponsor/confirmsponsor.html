@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--/*/ <th:block th:include="fragments/loginpart :: head"></th:block> /*/-->
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/runnerstyle/edit.css}"/>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/index}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+</div>
+
+
+<div style="height: 35.8vw">
+    <h2 style="margin-top: 5vh">Спасибо за вашу спонсорскую поддержку!</h2>
+
+    <h4>Спасибо за поддержку бегуна в Marathon Skills 2018! <br> Ваше пожертвование пойдет в его благотворительую
+        организацию</h4>
+
+    <div th:object="${sponsor}">
+        <p>
+        <h1 style="color: #5D5D5D"
+            th:text="*{registration.runner.email.firstName+' '+registration.runner.email.lastName+'('+registration.id+')'+' из '+registration.runner.countryCode}"></h1></p>
+        <p style="font-size: 40pt;color: #bab5b5" th:text="*{registration.charity.name}"></p>
+        <p style="font-size: 70pt;color: #AAAAAA" th:text="*{'$'+amount}"></p>
+        <p><a th:href="@{/index}" class="btn" style="background-color: #DCDCDC;border: 1px solid;color: black">Назад</a>
+        </p>
+    </div>
+</div>
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+
+</body>
+</html>

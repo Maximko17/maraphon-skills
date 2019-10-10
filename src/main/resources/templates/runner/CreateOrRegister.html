@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/runnerstyle/register.css}"/>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/index.css}"/>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/index}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+</div>
+
+<div style="height: 30.1vw">
+    <form th:action="@{/login}" style="margin-top: 17vh;">
+        <button type="submit" class="register-button">Я участвовал ранее</button>
+        <br>
+    </form>
+    <form th:action="@{/becomeRunner}">
+        <button type="submit" class="register-button">Я новый участник</button>
+        <br>
+    </form>
+    <!--/*/ <th:block th:include="fragments/loginpart :: login-button"></th:block> /*/-->
+</div>
+
+<div class="register-bot">
+    <h4 th:text="${countDown}"></h4>
+</div>
+
+</body>
+</html>

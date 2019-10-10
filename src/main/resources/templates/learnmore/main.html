@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/runnerstyle/main.css}"/>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/index}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+</div>
+
+<div style="height: 38.3vw">
+    <div class="login-text">
+        <h2>Подробная информация<br/></h2>
+    </div>
+    <table>
+        <tr>
+            <th>
+                <form th:action="@{/aboutEvent}">
+                    <button type="submit" class="register-button">Marathon Skills 2018</button>
+                    <br>
+                </form>
+            </th>
+            <th>
+                <form th:action="@{/marathonCompare}" style="margin-left: 20px">
+                    <button type="submit" class="register-button">Насколько долгий <br> марафон</button>
+                    <br>
+                </form>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <form th:action="@{/allResults}">
+                    <button type="submit" class="register-button">Предыдущие результаты</button>
+                    <br>
+                </form>
+            </th>
+            <th>
+                <form th:action="@{/charityOrgList}" style="margin-left: 20px">
+                    <button type="submit" class="register-button">Список благотворительных <br> организаций</button>
+                    <br>
+                </form>
+            </th>
+        <tr>
+        <tr>
+            <th>
+                <form th:action="@{/calculatorBMI}" style="margin-left: 20px">
+                    <button type="submit" class="register-button">BMI Калькулятор</button>
+                    <br>
+                </form>
+            </th>
+            <th>
+                <form th:action="@{/calculatorBMR}" style="margin-left: 20px">
+                    <button type="submit" class="register-button">BMR Калькулятор</button>
+                    <br>
+                </form>
+            </th>
+        <tr>
+    </table>
+</div>
+
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/coordinatorstyle/runners.css}"/>
+</head>
+<body class="align">
+<div class="register-top flex-container">
+    <form th:action="@{/coordinator/runners}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="register-back" style="margin-right: 20px">Выйти</button>
+    </form>
+</div>
+
+<div class="register-middle">
+    <div class="login-text">
+        <h2>Управление бегунами<br/></h2>
+    </div>
+    <div th:object="${registration}">
+        <div class="flex-container">
+            <div>
+                <div class="flex-container" style="margin-top: 3vh;">
+                    <div class="text-right" style="margin-left: 15vw; line-height: 0.5;">
+                        <h4><label>Email:</label></h4><br>
+                        <h4><label>Имя:</label></h4><br>
+                        <h4><label>Фамилия:</label></h4><br>
+                        <h4><label>Пол:</label></h4><br>
+                        <h4><label>Дата Рождения:</label></h4><br>
+                        <h4><label>Страна:</label></h4><br>
+                        <h4><label>Благотворит:</label></h4><br>
+                        <h4><label>Пожертвовано:</label></h4><br>
+                        <h4><label>Выбранный пакет:</label></h4><br>
+                        <h4><label>Дистанция:</label></h4><br>
+                    </div>
+
+                    <div>
+                        <div style="text-align: left">
+                            <input readonly type="text" th:field="*{runner.email.username}" class="edit-field1"><br/>
+                            <input readonly type="text" th:field="*{runner.email.firstName}" placeholder="Имя"
+                                   class="edit-field"><br/>
+                            <input readonly type="text" th:field="*{runner.email.lastName}" placeholder="Фамилия"
+                                   class="edit-field"><br/>
+                            <input readonly type="text" th:field="*{runner.gender}" placeholder="Пол"
+                                   class="edit-field"><br/>
+                            <input readonly type="text" th:field="*{runner.dateOfBirth}" placeholder="Дата Рождения"
+                                   class="edit-field"><br/>
+                            <input readonly type="text" th:field="*{runner.countryCode}" placeholder="Страна"
+                                   class="edit-field"><br/>
+                            <input readonly type="text" th:field="*{charity.name}" placeholder="Наименование"
+                                   class="edit-field"><br/>
+                            <input readonly type="text" th:field="*{sponsorTarget}" placeholder="$500"
+                                   class="edit-field"><br/>
+                            <input readonly type="text" th:field="*{raceKitOption.type}" placeholder="Вариант В"
+                                   class="edit-field"><br/>
+                            <div class="edit-field">
+                                <div th:each="regEvent : ${regEvents}">
+                                    <h6 th:text="${regEvent.event.eventType}"></h6>
+                                </div>
+                            </div>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div style="width: 300px;height: 300px;background-color: lightgray;margin-top: 10vh;">
+                    <img th:src="@{'/img/'+${registration.runner.filename}}" style="width: 100%;height: 100%">
+                </div>
+            </div>
+
+            <div style="margin-top: 3vh;margin-left: 2vw">
+                <h4>Регстрационный <br>статус</h4><br>
+                <div class="flex-container">
+                    <div class="text-right">
+                        <h4 style="color: #bab5b5;padding-top: 5vh;">Зарегестрирован</h4>
+                        <h4 style="color: #bab5b5;padding-top: 8vh;">Подтверждена <br>оплата</h4>
+                        <h4 style="color: #bab5b5;padding-top: 8vh;">Выдан пакет</h4>
+                        <h4 style="color: #bab5b5;padding-top: 8vh;">Вышел на старт</h4>
+                    </div>
+
+                    <div style="margin-left: 2vw">
+                        <div style="width: 10px;height: 450px;background-color: grey">
+                            <div style="padding-left: 1vw">
+                                <img th:src="@{/images/tick-icon.png}">
+
+                                <img th:if="*{runner.paymentStatus=='Оплата не подтверждена'}"
+                                     th:src="@{/images/cross.png}">
+                                <img th:unless="*{runner.paymentStatus=='Оплата не подтверждена'}"
+                                     th:src="@{/images/tick-icon.png}">
+
+                                <img th:if="*{registrationStatus.registrationStatus!='Выдан пакет'}"
+                                     th:src="@{/images/cross.png}">
+                                <img th:unless="*{registrationStatus.registrationStatus!='Выдан пакет'}"
+                                     th:src="@{/images/tick-icon.png}">
+
+                                <img th:if="*{registrationStatus.registrationStatus!='Вышел на старт'}"
+                                     th:src="@{/images/cross.png}">
+                                <img th:unless="*{registrationStatus.registrationStatus!='Вышел на старт'}"
+                                     th:src="@{/images/tick-icon.png}">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-one">
+                <a th:href="@{'/coordinator/showCertificat/'+${registration.runner.id}}" class="btn"
+                   style="border:1px solid;background-color: #DCDCDC;color: black">Показать<br> сертификат</a>
+            </div>
+            <div class="flex-one">
+                <a href="#" data-toggle="modal" data-target="#myModal" class="btn"
+                   style="border:1px solid;background-color: #DCDCDC;color: black">Печать бейджа</a>
+            </div>
+            <div class="flex-one">
+                <a th:href="@{'/coordinator/editRunnerProfile/' + ${registration.runner.id}}" class="btn"
+                   style="border:1px solid;background-color: #DCDCDC;color: black">Редактирование<br> профиля</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Header</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img th:src="@{'/img/'+${registration.runner.filename}}" style="width: 50%;height: 50%">
+                <div>
+                    <h1 th:text="${registration.runner.email.firstName +' '+ registration.runner.email.lastName}"></h1>
+                    <h2 th:text="${'Страна '+registration.runner.countryCode}"></h2>
+                    <h3 th:text="${'Благотворительная организация '+registration.charity.name}"></h3>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

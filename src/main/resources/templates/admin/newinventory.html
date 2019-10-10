@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/runnerstyle/main.css}"/>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/admin/inventory}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="register-back" style="margin-right: 20px">Выйти</button>
+    </form>
+</div>
+
+<div style="height: 42vw">
+    <div class="login-text">
+        <h2>Поступление инвенторя<br/></h2>
+    </div>
+
+    <form th:action="@{/addNewInvItem}" method="post" th:object="${inventory}">
+        <table class="table" style="width: 30vw">
+            <thead style="background-color: #797979;color: #4a4848">
+            <tr>
+                <th>Наименование</th>
+                <th>Поступление</th>
+            </tr>
+            </thead>
+            <tr>
+                <td style="background-color: #BFBFBF">Номер</td>
+                <td><input type="text" th:field="*{number}" pattern="[^A-Za-zА-Яа-яЁё]{1,4}" required
+                           title="Только цифры, не более 4-х.Напишите 0,если не хотите изменять товар"
+                           class="newInventoryField"></td>
+            </tr>
+            <tr>
+                <td style="background-color: #DCDCDC">RFID бр-т</td>
+                <td><input type="text" th:field="*{rfid}" pattern="[^A-Za-zА-Яа-яЁё]{1,4}" required
+                           title="Только цифры, не более 4-х.Напишите 0,если не хотите изменять товар"
+                           class="newInventoryField"></td>
+            </tr>
+            <tr>
+                <td style="background-color: #BFBFBF">Бейсболка</td>
+                <td><input type="text" th:field="*{baseball}" pattern="[^A-Za-zА-Яа-яЁё]{1,4}" required
+                           title="Только цифры, не более 4-х.Напишите 0,если не хотите изменять товар"
+                           class="newInventoryField"></td>
+            </tr>
+            <tr>
+                <td style="background-color: #DCDCDC">Бут. воды</td>
+                <td><input type="text" th:field="*{bottleWater}" pattern="[^A-Za-zА-Яа-яЁё]{1,4}"
+                           title="Только цифры, не более 4-х.Напишите 0,если не хотите изменять товар"
+                           class="newInventoryField"></td>
+            </tr>
+            <tr>
+                <td style="background-color: #BFBFBF">Футболка</td>
+                <td><input type="text" th:field="*{TShirt}" pattern="[^A-Za-zА-Яа-яЁё]{1,4}" required
+                           title="Только цифры, не более 4-х.Напишите 0,если не хотите изменять товар"
+                           class="newInventoryField"></td>
+            </tr>
+            <tr>
+                <td style="background-color: #DCDCDC">Сув. буклет</td>
+                <td><input type="text" th:field="*{suvBooklet}" pattern="[^A-Za-zА-Яа-яЁё]{1,4}" required
+                           title="Только цифры, не более 4-х.Напишите 0,если не хотите изменять товар"
+                           class="newInventoryField"></td>
+            </tr>
+        </table>
+
+        <div style="margin-right: 55vw;margin-top: 5vh">
+            <button type="submit" class="btn" style="border: 1px solid">Сохранить</button>
+        </div>
+    </form>
+</div>
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+
+</body>
+</html>

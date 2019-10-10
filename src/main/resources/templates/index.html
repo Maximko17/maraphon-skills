@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/index.css}"/>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body class="align">
+
+<div class="index-top">
+    <h1>MARATHON SKILLS 2018</h1>
+
+    <p>Моква, Россия<br>
+        среда 21 декабря 2018
+    </p>
+</div>
+<div style="height: 30.2vw">
+    <form th:action="@{/registerAsRunner}">
+        <button type="submit" class="index-button">Я хочу стать бегуном</button>
+        <br>
+    </form>
+    <form th:action="@{/becomeSponsor}">
+        <button type="submit" class="index-button">Я хочу стать спонсором бегуна</button>
+        <br>
+    </form>
+    <form th:action="@{/learnMore}">
+        <button type="submit" class="index-button">Я хочу узнать больше о событии</button>
+        <br>
+    </form>
+
+    <!--/*/ <th:block th:include="fragments/loginpart :: login-button"></th:block> /*/-->
+</div>
+<div class="index-bot">
+    <h4 th:text="${countDown}"></h4>
+</div>
+
+</body>
+</html>

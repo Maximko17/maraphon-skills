@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/learnmore/bmicalc.css}"/>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/learnMore}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+</div>
+
+<div style="height: 35.8vw">
+    <h2 style="margin-top: 5vh">BMR Калькулятор</h2>
+
+    <div class="flex-container">
+        <div style="margin-left: 10vw;" class="mt-3">
+            <p>
+                Рассчитайте, сколько энергии в калориях необходимо потреблять вашему организму<br> в состоянии покоя для
+                обеспечения всех жизненных процессов (дыхания, кровообращения и проч.).<br>
+                Лайфхак: собираетесь похудеть? Введите не свой вес, а желаемый.<br> Вы получите показатель Basal
+                Methabolic Rate (BMR) - базовую скорость метаболизма.
+            </p>
+            <form th:action="@{/calcBMR}" method="post" style="margin-left: 15vw">
+                <div class="flex-container">
+                    <div>
+                        <input type="radio" name="gender" id="male" value="male" checked="checked">
+                        <img th:src="@{/images/male-icon.png}" width="40px"><br>
+                        Мужской
+                    </div>
+                    <div class="ml2">
+                        <input type="radio" name="gender" id="female" value="female">
+                        <img th:src="@{/images/female-icon.png}" width="40px"><br>
+                        Женский
+                    </div>
+                </div>
+
+                <div class="flex-container mt-3">
+                    <div class="text-right" style="line-height: 0.1">
+                        <h4><label>Рост:</label></h4><br>
+                        <h4><label>Вес:</label></h4><br>
+                        <h4><label>Возраст:</label></h4>
+                    </div>
+                    <div class="ml2">
+                        <input type="text" name="height" required title="Только цифры" pattern="[0-9]{3}"
+                               placeholder="170" size="4vw"><br>
+                        <input type="text" name="weight" required title="Только цифры" pattern="[0-9]{2,3}"
+                               placeholder="70" size="4vw" class="mt-3"><br>
+                        <input type="text" name="age" placeholder="70" required title="Только цифры" pattern="[0-9]{2}"
+                               size="4vw" class="mt-3">
+                    </div>
+                    <div class="text-left ml2" style="line-height: 2.4;">
+                        <label>см</label><br>
+                        <label>кг</label><br>
+                        <label>лет</label>
+                    </div>
+
+                </div>
+
+                <div style="margin-top: 3vh;margin-right: 20vw;">
+                    <button type="submit" class="btn" style="border: 1px solid">Расчитать</button>
+                    <a th:href="@{/learnMore}" style="background-color: #DCDCDC;border: 1px solid #000;color: #000"
+                       class="btn btn-link">Отмена</a>
+                </div>
+            </form>
+
+        </div>
+
+
+        <div class="mt-3 ml-5" th:if="${bmr!=null}">
+            <p class="text-left">Информация о показателях калорий<br> показывается здесь</p>
+
+            <p><h4 style="color: #bab5b5">Ваш BMR</h4></p>
+            <p>
+            <h3 style="color: #6b6a6a" th:text="${bmr}"></h3></p>
+            <div class="flex-container">
+                <h4 style="color: #bab5b5">Ежедневно тратится<br>калорий</h4>
+                <a data-toggle="modal" data-target="#myModal"><img th:src="@{/images/info.jpg}" class="ml-5 mt-3"
+                                                                   width="20px" height="20px"></a>
+            </div>
+            <div class="flex-container">
+                <div class="text-right">
+                    <h5 style="color: lightseagreen">Сидячий:</h5><br>
+                    <h5 style="color: green">Маленькая активнсть:</h5><br>
+                    <h5 style="color: #FFC114">Средняя активность:</h5><br>
+                    <h5 style="color: red">Сильная активнеость:</h5><br>
+                    <h5 style="color: red">Максимальная активномть:</h5><br>
+                </div>
+
+                <div style="line-height: 1.2;">
+                    <h4 style="color: lightseagreen" class="ml-2"
+                        th:text="${#numbers.formatDecimal(bmr*1.2, 1, 0)}"></h4><br>
+                    <h4 style="color: green" class="ml-2" th:text="${#numbers.formatDecimal(bmr*1.375, 1, 0)}"></h4><br>
+                    <h4 style="color: #FFC114" class="ml-2" th:text="${#numbers.formatDecimal(bmr*1.55, 1, 0)}"></h4>
+                    <br>
+                    <h4 style="color: red" class="ml-2" th:text="${#numbers.formatDecimal(bmr*1.725, 1, 0)}"></h4><br>
+                    <h4 style="color: red" class="ml-2" th:text="${#numbers.formatDecimal(bmr*1.9, 1, 0)}"></h4><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Уровни активности</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body text-left">
+                <h5>Это описание всех уровней активности</h5>
+                <ul>
+                    <li><b>Сидячий:</b> сидячий образ жизни — бич нашего времени. Он ломает спины и уродует фигуры. А мы
+                        всё сидим… Пора, конечно, встать и пробежаться. Но если работа досталась сидячая, то особенно
+                        много не побегаешь. Тогда нужно хотя бы изменить свой стиль питания.
+                    </li>
+                    <li><b>Маленькая активность:</b> соответствует состоянию покоя, например, когда человек спит или
+                        лежа читает или смотрит телепередачи.
+                    </li>
+                    <li><b>Средняя активность:</b> уровень, при котором несколько повышается частота сердечных
+                        сокращений и остается ощущение тепла и легкой одышки, например, при быстрой ходьбе, плавании,
+                        езде на велосипеде по ровной поверхности, танцах.
+                    </li>
+                    <li><b>Сильная активность:</b> это нагрузка, которая значительно повышает частоту сердечных
+                        сокращений и вызывает появление пота и сильной одышки («не хватает дыхания»), например усилия,
+                        затрачиваемые здоровым человеком при беге, занятиях аэробикой, плавании на дистанцию, быстрой
+                        езде на велосипеде, подъеме в гору.
+                    </li>
+                    <li><b>Максимальная активность: </b>Продолжительность жизни людей профессионально занимающихся
+                        спортом заметно ниже среднестатистической. Однажды решили собрать олимпийских чемпионов,
+                        получивших медали на Олимпийских играх 30 лет назад. Но к изумлению организаторов встречи, лишь
+                        немногие спортсмены остались в живых. Часть из них была на инвалидных колясках.
+                        А средний возраст этих ветеранов олимпийцев был всего лишь 50-55 лет. Дело в том, что
+                        профессиональный спорт требует сверх нагрузок.
+                        Организм приспосабливается к такому режиму. Поглощаемая еда превращается в энергию
+                        аденозинтрифосфорной кислоты. Аденозинтрифосфорная кислота (АТФ) - это органической соединение,
+                        являющееся основным источником энергии в организме. Ее образование сопровождается увеличением
+                        разности потенциалов в митохондриях и на мембранах клеток.
+                        Организм профессиональных спортсменов привыкает расходовать данную энергию в виде физической
+                        активности. Последующее уменьшение физической активности в свою очередь приводит к тому, что
+                        частично излишек энергии расходуется на повышение массы тела за счет активного функционирования
+                        тучных клеток.
+                        Другая часть излишка энергии начинает повреждать клетки самого организма. В целом протекает этот
+                        негативный процесс за счет того, что излишки энергии изменяют конфигурацию микроаттракторов
+                        человека.
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

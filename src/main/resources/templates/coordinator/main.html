@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/coordinatorstyle/main.css}"/>
+</head>
+<body class="align">
+<div class="register-top flex-container">
+    <form th:action="@{/index}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="register-back" style="margin-right: 20px">Выйти</button>
+    </form>
+</div>
+
+<div style="height: 35.8vw;">
+    <div class="login-text">
+        <h2>Меню Координатора<br/></h2>
+    </div>
+    <div class=" flex-container" style="margin-left: 8vw;margin-top: 5vw">
+        <div>
+            <form th:action="@{/coordinator/runners}">
+                <button type="submit" class="register-button">Бегуны</button>
+                <br>
+            </form>
+        </div>
+
+        <div style="margin-left: 2vw;">
+            <form th:action="@{/coordinator/sponsors}">
+                <button type="submit" class="register-button">Спонсоры</button>
+                <br>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+</body>
+</html>

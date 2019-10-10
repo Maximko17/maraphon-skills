@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/runnerstyle/main.css}"/>
+    <script th:src="@{/js/script.js}"></script>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/learnMore}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+</div>
+
+<div style="height: 45vw">
+    <div class="login-text">
+        <h2>Насколько длинный марафон<br/></h2>
+    </div>
+    <div class="flex-container">
+        <div class="flex-one">
+            <h3>Дистанция</h3>
+            <button class="tablinks btn" style="border: 1px solid" onclick="openImage(event, 'Airbus')">
+                <img th:src="@{/images/compares/airbus-a380.jpg}" width="100px">
+                Airbus A380
+            </button>
+            <br/>
+            <button class="tablinks btn" style="border: 1px solid;margin-top: 2vw"
+                    onclick="openImage(event, 'Havaianas')">
+                <img th:src="@{/images/compares/pair-of-havaianas.jpg}" width="100px">
+                Havaianas
+            </button>
+            <br/>
+            <button class="tablinks btn" style="border: 1px solid;margin-top: 2vw"
+                    onclick="openImage(event, 'Football')">
+                <img th:src="@{/images/compares/football-field.jpg}" width="100px">
+                Football Field
+            </button>
+            <br/>
+            <button class="tablinks btn" style="border: 1px solid;margin-top: 2vw"
+                    onclick="openImage(event, 'Ronaldinho')">
+                <img th:src="@{/images/compares/ronaldinho.jpg}" width="100px">
+                Ronaldinho
+            </button>
+            <br/>
+            <button class="tablinks btn" style="border: 1px solid;margin-top: 2vw" onclick="openImage(event, 'Bus')">
+                <img th:src="@{/images/compares/bus.jpg}" width="100px">
+                Bus
+            </button>
+            <br/>
+        </div>
+
+        <div class="flex-one mt-5">
+            <div id="Airbus" class="tabcontent">
+                <img th:src="@{/images/compares/airbus-a380.jpg}" width="100%">
+                <p>"Длина ААА ВВВ. Это займет CCC из них, чтобы покрыть расстояние в 42 км марафона</p>
+            </div>
+
+            <div id="Havaianas" class="tabcontent">
+                <img th:src="@{/images/compares/pair-of-havaianas.jpg}" width="100%">
+                <p>"Длина ААА ВВВ. Это займет CCC из них, чтобы покрыть расстояние в 42 км марафона</p>
+            </div>
+
+            <div id="Football" class="tabcontent">
+                <img th:src="@{/images/compares/football-field.jpg}" width="100%">
+                <p>Длина футбольного поля 100м. Это займет 420 из них, чтобы покрыть расстояние в 42 км марафона</p>
+            </div>
+
+            <div id="Ronaldinho" class="tabcontent">
+                <img th:src="@{/images/compares/ronaldinho.jpg}" width="100%">
+                <p>"Длина ААА ВВВ. Это займет CCC из них, чтобы покрыть расстояние в 42 км марафона</p>
+            </div>
+
+            <div id="Bus" class="tabcontent">
+                <img th:src="@{/images/compares/bus.jpg}" width="100%">
+                <p>"Длина ААА ВВВ. Это займет CCC из них, чтобы покрыть расстояние в 42 км марафона</p>
+            </div>
+
+            <div id="F1" class="tabcontent">
+                <img th:src="@{/images/compares/f1-car.jpg}" width="100%">
+                <p>Максимальная скорость Формулы-1 = 372,6 км\ч . Это займет 11 минут чтобы завершить 42km марафон </p>
+            </div>
+
+            <div id="Worm" class="tabcontent">
+                <img th:src="@{/images/compares/worm.jpg}" width="100%">
+                <p>Максимальная скорость ААА ВВВ. Это займет CCC чтобы завершить 42km марафон </p>
+            </div>
+
+            <div id="Sloth" class="tabcontent">
+                <img th:src="@{/images/compares/sloth.jpg}" width="100%">
+                <p>Максимальная скорость ААА ВВВ. Это займет CCC чтобы завершить 42km марафон </p>
+            </div>
+
+            <div id="Capybara" class="tabcontent">
+                <img th:src="@{/images/compares/capybara.jpg}" width="100%">
+                <p>Максимальная скорость ААА ВВВ. Это займет CCC чтобы завершить 42km марафон </p>
+            </div>
+
+            <div id="Jaguar" class="tabcontent">
+                <img th:src="@{/images/compares/jaguar.jpg}" width="100%">
+                <p>Максимальная скорость ААА ВВВ. Это займет CCC чтобы завершить 42km марафон </p>
+            </div>
+        </div>
+
+        <div class="flex-one">
+            <h3>Скорость</h3>
+            <button class="tablinks btn" style="border: 1px solid" onclick="openImage(event, 'F1')">
+                F1 Car
+                <img th:src="@{/images/compares/f1-car.jpg}" width="100px">
+            </button>
+            <br/>
+            <button class="tablinks btn" style="border: 1px solid;margin-top: 2vw" onclick="openImage(event, 'Worm')">
+                Worm
+                <img th:src="@{/images/compares/worm.jpg}" width="100px">
+            </button>
+            <br/>
+            <button class="tablinks btn" style="border: 1px solid;margin-top: 2vw" onclick="openImage(event, 'Sloth')">
+                Sloth
+                <img th:src="@{/images/compares/sloth.jpg}" width="100px">
+            </button>
+            <br/>
+            <button class="tablinks btn" style="border: 1px solid;margin-top: 2vw"
+                    onclick="openImage(event, 'Capybara')">
+                Capybara
+                <img th:src="@{/images/compares/capybara.jpg}" width="100px">
+            </button>
+            <br/>
+            <button class="tablinks btn" style="border: 1px solid;margin-top: 2vw" onclick="openImage(event, 'Jaguar')">
+                Jaguar
+                <img th:src="@{/images/compares/jaguar.jpg}" width="100px">
+            </button>
+            <br/>
+        </div>
+    </div>
+
+</div>
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+
+</body>
+</html>

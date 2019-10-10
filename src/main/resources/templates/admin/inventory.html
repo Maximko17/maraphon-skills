@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/runnerstyle/main.css}"/>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/admin/main}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="register-back" style="margin-right: 20px">Выйти</button>
+    </form>
+</div>
+
+<div style="height: 42vw">
+    <div class="login-text">
+        <h2>Инвентарь<br/></h2>
+    </div>
+
+    <h4><b th:text="${'Всего зарегестрированных пользователей: '+#lists.size(totalRegRunners)}"></b></h4>
+    <table class="table table-striped table-bordered" style="width: 80vw;margin-left: 10vw;" th:object="${inventory}">
+        <thead style="background-color: #797979">
+        <tr style="color: #4a4848">
+            <th>Комплект</th>
+            <th>Тип А</th>
+            <th>Тип В</th>
+            <th>Тип С</th>
+            <th>Необходимо</th>
+            <th>Остаток</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>Выбрало <br> данный <br> комплект</td>
+            <td th:text="${#lists.size(kitA)}"></td>
+            <td th:text="${#lists.size(kitB)}"></td>
+            <td th:text="${#lists.size(kitC)}"></td>
+            <td>Сумма</td>
+            <td>Остаток</td>
+        </tr>
+        <tr>
+            <th colspan="6">Состав комплекта</th>
+        </tr>
+        <tr>
+            <td>Номер</td>
+            <td th:text="*{getNumber()}"></td>
+            <td th:text="*{getNumber()}"></td>
+            <td th:text="*{getNumber()}"></td>
+            <td th:text="*{getNumber()*65+'$'}"></td>
+            <td th:text="${inventory.getNumber() -(#lists.size(kitA)+#lists.size(kitB)+#lists.size(kitC))}"></td>
+        </tr>
+        <tr>
+            <td>RFID бр-т</td>
+            <td th:text="*{getRfid()}"></td>
+            <td th:text="*{getRfid()}"></td>
+            <td th:text="*{getRfid()}"></td>
+            <td th:text="*{getRfid()*65+'$'}"></td>
+            <td th:text="${inventory.getRfid() -(#lists.size(kitA)+#lists.size(kitB)+#lists.size(kitC))}"></td>
+        </tr>
+        <tr>
+            <td>Бейсболка</td>
+            <td><img th:src="@{/images/cross.png}" width="30px"></td>
+            <td th:text="*{getBaseball()}"></td>
+            <td th:text="*{getBaseball()}"></td>
+            <td th:text="*{getBaseball()*65+'$'}"></td>
+            <td th:text="${inventory.getBaseball() -(#lists.size(kitB)+#lists.size(kitC))}"></td>
+        </tr>
+        <tr>
+            <td>Бут. воды</td>
+            <td><img th:src="@{/images/cross.png}" width="30px"></td>
+            <td th:text="*{getBottleWater()}"></td>
+            <td th:text="*{getBottleWater()}"></td>
+            <td th:text="*{getBottleWater()*65+'$'}"></td>
+            <td th:text="${inventory.getBottleWater() -(#lists.size(kitB)+#lists.size(kitC))}"></td>
+        </tr>
+        <tr>
+            <td>Футболка</td>
+            <td><img th:src="@{/images/cross.png}" width="30px"></td>
+            <td><img th:src="@{/images/cross.png}" width="30px"></td>
+            <td th:text="*{getTShirt()}"></td>
+            <td th:text="*{getTShirt()*45+'$'}"></td>
+            <td th:text="${inventory.getTShirt() -#lists.size(kitC)}"></td>
+        </tr>
+        <tr>
+            <td>Сув. буклет</td>
+            <td><img th:src="@{/images/cross.png}" width="30px"></td>
+            <td><img th:src="@{/images/cross.png}" width="30px"></td>
+            <td th:text="*{getSuvBooklet()}"></td>
+            <td th:text="*{getSuvBooklet()*45+'$'}"></td>
+            <td th:text="${inventory.getSuvBooklet() -#lists.size(kitC)}"></td>
+        </tr>
+    </table>
+</div>
+
+<div class="flex-container" style="margin:3vh 0vh 3vh 0vh">
+    <div class="flex-one">
+        <a th:href="@{/admin/report}" data-toggle="modal" data-target="#myModal" class="btn"
+           style="background-color: #DCDCDC;border: 1px solid;color: black">Отчет</a>
+    </div>
+    <div class="flex-one">
+        <a th:href="@{/admin/newInventory}" class="btn"
+           style="background-color: #DCDCDC;border: 1px solid;color: black">Поступление</a>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="width: 150%">
+            <div class="modal-header">
+                <h4 class="modal-title">Отчет</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-bordered" style="margin-left: 0vw" th:object="${inventory}">
+                    <thead>
+                    <tr>
+                        <th>Наименование</th>
+                        <th>Остаток</th>
+                        <th>необходимо</th>
+                        <th>Надо заказать</th>
+                    </tr>
+                    <tr>
+                        <td>Номер</td>
+                        <td th:text="${inventory.getNumber() -(#lists.size(kitA)+#lists.size(kitB)+#lists.size(kitC))}"></td>
+                        <td>500</td>
+                        <td th:if="${(inventory.getNumber() -(#lists.size(kitA)+#lists.size(kitB)+#lists.size(kitC)))<=500}"
+                            th:text="${500 - (inventory.getNumber() -(#lists.size(kitA)+#lists.size(kitB)+#lists.size(kitC)))}"></td>
+                        <td th:unless="${(inventory.getNumber() -(#lists.size(kitA)+#lists.size(kitB)+#lists.size(kitC)))<=500}"
+                            th:text="${0}"></td>
+                    </tr>
+                    <tr>
+                        <td>RFID бр-т</td>
+                        <td th:text="${inventory.getRfid() -(#lists.size(kitA)+#lists.size(kitB)+#lists.size(kitC))}"></td>
+                        <td>500</td>
+                        <td th:if="${(inventory.getRfid() -(#lists.size(kitA)+#lists.size(kitB)+#lists.size(kitC)))<=500}"
+                            th:text="${500 - (inventory.getRfid() -(#lists.size(kitA)+#lists.size(kitB)+#lists.size(kitC)))}"></td>
+                        <td th:unless="${(inventory.getRfid() -(#lists.size(kitA)+#lists.size(kitB)+#lists.size(kitC)))<=500}"
+                            th:text="${0}"></td>
+                    </tr>
+                    <tr>
+                        <td>Бейсболка</td>
+                        <td th:text="${inventory.getBaseball() -(#lists.size(kitB)+#lists.size(kitC))}"></td>
+                        <td>500</td>
+                        <td th:if="${(inventory.getBaseball() -(#lists.size(kitB)+#lists.size(kitC)))<=500}"
+                            th:text="${500 - (inventory.getBaseball() -(#lists.size(kitB)+#lists.size(kitC)))}"></td>
+                        <td th:unless="${(inventory.getBaseball() -(#lists.size(kitB)+#lists.size(kitC)))<=500}"
+                            th:text="${0}"></td>
+                    </tr>
+                    <tr>
+                        <td>Бут. воды</td>
+                        <td th:text="${inventory.getBottleWater() -(#lists.size(kitB)+#lists.size(kitC))}"></td>
+                        <td>500</td>
+                        <td th:if="${(inventory.getBottleWater() -(#lists.size(kitB)+#lists.size(kitC)))<=500}"
+                            th:text="${500 - (inventory.getBottleWater() -(#lists.size(kitB)+#lists.size(kitC)))}"></td>
+                        <td th:unless="${(inventory.getBottleWater() -(#lists.size(kitB)+#lists.size(kitC)))<=500}"
+                            th:text="${0}"></td>
+                    </tr>
+                    <tr>
+                        <td>Футболка</td>
+                        <td th:text="${inventory.getTShirt() -#lists.size(kitC)}"></td>
+                        <td>500</td>
+                        <td th:if="${(inventory.getTShirt() -#lists.size(kitC))<=500}"
+                            th:text="${500 - (inventory.getTShirt() -#lists.size(kitC))}"></td>
+                        <td th:unless="${(inventory.getTShirt() -#lists.size(kitC))<=500}" th:text="${0}"></td>
+                    </tr>
+                    <tr>
+                        <td>Сув. буклет</td>
+                        <td th:text="${inventory.getSuvBooklet() -#lists.size(kitC)}"></td>
+                        <td>500</td>
+                        <td th:if="${(inventory.getSuvBooklet() -#lists.size(kitC))<=500}"
+                            th:text="${500 - (inventory.getSuvBooklet() - #lists.size(kitC))}"></td>
+                        <td th:unless="${(inventory.getSuvBooklet() -#lists.size(kitC))<=500}" th:text="${0}"></td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Печать</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+
+</body>
+</html>

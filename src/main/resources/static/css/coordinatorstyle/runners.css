@@ -1,0 +1,145 @@
+body h2 {
+    color: #4a4848;
+}
+
+body h4 {
+    color: #4a4848;
+}
+
+.align {
+    text-align: center;
+}
+
+.register-top {
+    background-color: #6b6a6a;
+    height: 5vw;
+}
+
+.register-top h1 {
+    font-family: 'Open Sens Semibold', sans-serif;
+    color: white;
+    font-size: 30pt;
+    padding-top: 1%;
+    padding-left: 40px;
+    flex: 2;
+    padding-right: 50vw;
+}
+
+.register-back {
+    height: 5vh;
+    width: 5vw;
+    border-radius: 10px;
+    font-size: 15pt;
+    margin-top: 2vh;
+    margin-left: 20px;
+}
+
+.register-middle {
+    height: 42vw;
+}
+
+.login-text {
+    margin-top: 3vh;
+}
+
+.register-button {
+    margin-top: 25px;
+    height: 15vh;
+    width: 40vw;
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: black;
+    font-size: 25pt;
+    color: #4a4848;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-one {
+    flex: 1;
+}
+
+.span {
+    padding-top: 5vh;
+}
+
+.input-field1 {
+    height: 40px;
+    width: 125%;
+    margin-left: 20px;
+}
+
+.input-field {
+    margin-top: 20px;
+    height: 40px;
+    width: 125%;
+    margin-left: 20px;
+}
+
+.edit-field1 {
+    height: 20px;
+    width: 125%;
+    margin-left: 20px;
+    Border: none;
+    outline: none;
+}
+
+.edit-field {
+    margin-top: 24px;
+    height: 30px;
+    width: 125%;
+    margin-left: 20px;
+    Border: none;
+    outline: none;
+}
+
+.bot-button {
+    width: 10vw;
+    height: 7vh;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.register-bot {
+    background-color: #6b6a6a;
+    height: 4.2vw;
+    color: white;
+    font-size: 20pt;
+    padding-top: 1%;
+}
+
+.upload-button {
+    margin-top: 3vh;
+    width: 15vw;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+.reload-button {
+    border-radius: 5px;
+    border: 1px solid;
+    height: 40px;
+}
+
+.edit-button {
+    border-radius: 5px;
+    border: 1px solid;
+    height: 30px;
+    width: 60px;
+}
+
+th {
+    color: #bab5b5
+}
+
+@font-face {
+    font-family: 'Open Sens Semibold';
+    src: url(/static/fonts/open-sans/OpenSans-Semibold.ttf);
+}
+
+@font-face {
+    font-family: 'Open Sens Italic';
+    src: url(/static/fonts/open-sans/OpenSans-Italic.ttf);
+}

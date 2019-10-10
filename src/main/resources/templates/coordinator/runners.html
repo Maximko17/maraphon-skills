@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/coordinatorstyle/runners.css}"/>
+</head>
+<body class="align">
+<div class="register-top flex-container">
+    <form th:action="@{/coordinator/main}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="register-back" style="margin-right: 20px">Выйти</button>
+    </form>
+</div>
+
+<div style="height: 108vw">
+    <div class="login-text">
+        <h2>Управление бегунами<br/></h2>
+    </div>
+    <div class="flex-container">
+        <div>
+            <h4 style="color: #bab5b5;">Сортировка и фильтрация</h4>
+            <form th:action="@{/coordinator/sortRunners}" method="post" class="flex-container"
+                  style="margin-left: 15vw;margin-top: 3vh;">
+                <div class="text-right">
+                    <h4>Статус:</h4><br/>
+                    <h4>Дистанция:</h4><br/>
+                    <h4>Сортировать:</h4><br/>
+                </div>
+
+                <div>
+                    <select type="text" name="paymentStatus" class="input-field1">
+                        <option>Оплата подтверждена</option>
+                        <option>Оплата не подтверждена</option>
+                    </select><br/>
+                    <select type="text" name="marathonType" class="input-field">
+                        <option value="Full Marathon">42km Полный марафон</option>
+                        <option value="Half Marathon">21km Полумарафон</option>
+                        <option value="5km Fun Run">5km Малая дистанция</option>
+                    </select><br/>
+                    <select type="text" name="Attr" class="input-field">
+                        <option>Имя</option>
+                        <option>Фамилия</option>
+                        <option>Email</option>
+                    </select><br/>
+                </div>
+
+                <div style="margin-left: 7vw;margin-top: 7.5vw;">
+                    <button type="submit" class="reload-button">Обновить</button>
+                </div>
+            </form>
+        </div>
+
+        <div style="padding-left: 10vw">
+            <h4 style="color: #bab5b5;">Выгрузка</h4>
+
+            <form th:action="@{/coordinator/uploadCSV}" method="post">
+                <button type="submit" class="upload-button">Детальной информации<br> CSV</button>
+            </form>
+
+            <form th:action="@{/coordinator/uploadEmail}" method="post">
+                <button type="submit" class="upload-button">Email список</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div th:if="${#lists.size(regRunners)!=0}">
+        <p><h4><b th:text="${'Всего бегунов:'+#lists.size(regRunners)}"></b></h4></p>
+        <table class="table table-striped table-bordered" style="width: 80vw;margin-left: 10vw;">
+            <thead style="background-color: #797979">
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Email</th>
+                <th>Статус</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tr th:each="runner : ${regRunners}">
+                <td th:text="${runner.registration.runner.email.firstName}"></td>
+                <td th:text="${runner.registration.runner.email.lastName}"></td>
+                <td th:text="${runner.registration.runner.email.username}"></td>
+                <td th:text="${runner.registration.runner.paymentStatus}"></td>
+
+                <td>
+                    <form th:action="@{'/coordinator/editRunner/'+${runner.registration.runner.id}}">
+                        <button type="submit" class="edit-button">Edit</button>
+                    </form>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <div style="margin-top: 20vh;" th:unless="${#lists.size(regRunners)!=0}">
+        <h4><b>Ничего не найдено</b></h4>
+    </div>
+</div>
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+h4 {
+    color: #4a4848;
+}
+
+.align {
+    text-align: center;
+}
+
+.register-top {
+    background-color: #6b6a6a;
+    height: 5vw;
+}
+
+.register-top h1 {
+    font-family: 'Open Sens Semibold', sans-serif;
+    color: white;
+    font-size: 30pt;
+    padding-top: 1%;
+    padding-left: 40px;
+    flex: 2;
+    padding-right: 50vw;
+}
+
+.input-field1 {
+    height: 40px;
+    width: 150%;
+    margin-left: 20px;
+}
+
+.input-field {
+    margin-top: 30px;
+    height: 40px;
+    width: 150%;
+    margin-left: 20px;
+}
+
+.register-back {
+    height: 5vh;
+    width: 5vw;
+    border-radius: 10px;
+    font-size: 15pt;
+    margin-top: 2vh;
+    margin-left: 20px;
+}
+
+.register-middle {
+    height: 35.8vw;
+}
+
+.register-login-button {
+    height: 5vh;
+    width: 20vw;
+    border-radius: 10px;
+    font-size: 15pt;
+    border-width: 1px;
+    border-color: black;
+}
+
+.search-button {
+    margin-left: 18vw;
+    margin-top: 4.5vw;
+    height: 5vh;
+    width: 10vw;
+    border-radius: 10px;
+    font-size: 15pt;
+    border-width: 1px;
+    border-color: black;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-one {
+    flex: 1;
+}
+
+.flex-two {
+    flex: 2;
+}
+
+.span {
+    padding-top: 5vh;
+}
+
+.title {
+    color: #4a4848;
+    margin-top: 5vh;
+}
+
+th {
+    color: #bab5b5
+}
+
+h5 {
+    color: #4a4848;
+    padding-top: 3vh;
+}
+
+.register-bot {
+    background-color: #6b6a6a;
+    height: 4.2vw;
+    color: white;
+    font-size: 20pt;
+    padding-top: 1%;
+}
+
+@font-face {
+    font-family: 'Open Sens Semibold';
+    src: url(/static/fonts/open-sans/OpenSans-Semibold.ttf);
+}
+
+@font-face {
+    font-family: 'Open Sens Italic';
+    src: url(/static/fonts/open-sans/OpenSans-Italic.ttf);
+}

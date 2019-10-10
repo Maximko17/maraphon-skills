@@ -1,0 +1,66 @@
+.align {
+    text-align: center;
+}
+
+.index-top {
+    background-color: #6b6a6a;
+    height: 13vw;
+}
+
+.index-top h1 {
+    font-family: 'Open Sens Semibold', sans-serif;
+    color: white;
+    font-size: 40pt;
+    padding-top: 1%;
+}
+
+.index-top p {
+    font-family: 'Open Sens Italic', sans-serif;
+    color: #bab5b5;
+    font-size: 20pt;
+    padding-top: 1vw;
+}
+
+.index-bot {
+    background-color: #6b6a6a;
+    height: 4.2vw;
+    color: white;
+    font-size: 20pt;
+    padding-top: 1%;
+}
+
+.index-middle {
+    height: 30vw;
+}
+
+.index-button {
+    margin-top: 25px;
+    height: 15vh;
+    width: 40vw;
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: black;
+    font-size: 25pt;
+    color: #4a4848;
+}
+
+.index-login-button {
+    margin-left: 60vw;
+    height: 5vh;
+    width: 10vw;
+    border-radius: 10px;
+    font-size: 15pt;
+    border-width: 1px;
+    border-color: black;
+    color: #4a4848;
+}
+
+@font-face {
+    font-family: 'Open Sens Semibold';
+    src: url(../fonts/open-sans/OpenSans-Semibold.ttf);
+}
+
+@font-face {
+    font-family: 'Open Sens Italic';
+    src: url(../fonts/open-sans/OpenSans-Italic.ttf);
+}

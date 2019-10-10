@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/runnerstyle/edit.css}"/>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/coordinator/main}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="register-back" style="margin-right: 20px">Выйти</button>
+    </form>
+</div>
+
+<div style="height: 70vw">
+    <h2 style="margin-top: 5vh">Просмотр спонсоров</h2>
+
+    <form th:action="@{/sortSponsors}" method="post" style="margin-top: 5vh;margin-left: 25vw" class="flex-container">
+        <h4><label>Отсортировать:</label></h4>
+        <select style="margin-left: 2vw;width: 30%" name="sort">
+            <option>Итоговой сумма</option>
+            <option>Наименованию</option>
+        </select>
+        <button type="submit" style="margin-left: 2vw">Отсортировать</button>
+    </form>
+
+    <h2 style="color: #797979;margin-top: 5vh"
+        th:text="${'Благотворительные организации: '+#lists.size(charities)}"></h2>
+    <h2 style="color: #797979" th:text="${'Всего спонсорских взносов: $'+totalSum}"></h2>
+
+    <table style="width: 60vw;margin-left:20vw" class="table-bordered">
+        <thead style="background-color: #797979;color: #4a4848;">
+        <tr>
+            <th>Логотоп</th>
+            <th>Наименование</th>
+            <th>Сумма</th>
+        </tr>
+        </thead>
+        <tr th:each="charity : ${charities}">
+            <td style="width: 15vw">
+                <img th:src="@{'/img/'+${charity.fileName}}" width="50%" class="image">
+            </td>
+            <td th:text="${charity.name}"></td>
+            <td th:text="${'$'+charity.sponsorSum}"></td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+
+</body>
+</html>

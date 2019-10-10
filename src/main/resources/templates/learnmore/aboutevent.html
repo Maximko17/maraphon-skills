@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/runnerstyle/main.css}"/>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/learnMore}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+</div>
+
+<div style=" height: 39.5vw;">
+    <div class="login-text">
+        <h2>Информация о Marathon Skills 2018<br/></h2>
+    </div>
+
+    <div class="flex-container" style="cursor: pointer">
+        <div style="margin-left: 15vw">
+            <form th:action="@{/interactiveMap}">
+                <button type="submit" style="width: 20vw; height: 25vh;border: 1px solid;cursor: pointer">
+                    Карта Марафона<br>(Нажмите, чтобы открыть<br> интерактивную карту)
+                </button>
+            </form>
+
+            <div class="text-left" style="margin-top: 2vh">
+                <a href="#" data-toggle="modal" data-target="#myModal">
+                    <img th:src="@{/images/teatro-municipal.jpg}" width="150px">
+                </a>
+                <a href="#" data-toggle="modal" data-target="#myModal1">
+                    <img th:src="@{/images/ibirapuera-park-lake.jpg}" width="150px" style="margin-left: 19px">
+                </a><br>
+                <a href="#" data-toggle="modal" data-target="#myModal2">
+                    <img th:src="@{/images/marathon-image.jpg}" width="150px">
+                </a>
+                <a href="#" data-toggle="modal" data-target="#myModal3">
+                    <img th:src="@{/images/banco-banespa.jpg}" width="150px" style="margin-left: 19px">
+                </a>
+            </div>
+        </div>
+
+        <div class="text-left" style="width: 50vw;margin-left: 5vw">
+            <p>
+                О Marathon Skills 2018
+
+                Marathon Skills - фестиваль бега, проводимый каждый год в разных частях мира. Может быть три зачета:
+                Полный Марафон, Полумарафон и забег для новичков - таким образом фестиваль подходит всем.
+
+                В прошлых годах марафон был проведен в Осаке, Япония (2014); Лейпциг, Германия (2013); Ханой, Вьетнам
+                (2012) и Йорк, Англия (2011).
+            </p>
+            <p>
+
+                В этом году, Marathon Skills очень зрелищно, продет в Сан-Паоло, Бразилия, он должен быть самым большим
+                фестивалем бега. Это финансовый центр Бразилии и самый большой город в Южной Америке.Сан-Пауло увидят
+                тысячи бегунов, которые будут бежать мимо небоскребов, зеленые парки и великолепная архитектура.
+
+                Этот фестиваль привлек рекордное количество бегунов со всего мира. особое внимание будет обращено на
+                участников из Кении и Ямайки, поскольку <br>мы надеемся увидеть победителя 2014 года. (Эфиоп закончил
+                гонку за 45 минут 4 секунды.)
+
+                Атмосфера праздника обещает развлечения для всех зрителей.
+            </p>
+            <p>
+                События:
+
+                - Программа "Самба" Полный Марафон начнется в Руа-Ду-Американо в 6 утра.
+
+                - Программа "Джонго" Полумарафон начнет в 7 утра Бегуны будут стартовать от <br>недалеко от пересечения
+                улицы Руа Ciniciata и Авенида.
+
+                - Программа "Капоэйра" в 5 км забег для новичков начнется в 15 часов Наши<br> новички побегут от
+                Мемориала Унинове.
+
+                Спасибо всем волонтерам, которые будут помогать нам проводить марафон!
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="width: 50vw">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img th:src="@{/images/teatro-municipal.jpg}" width="100%">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="width: 50vw">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img th:src="@{/images/ibirapuera-park-lake.jpg}" width="100%">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="width: 50vw">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img th:src="@{/images/marathon-image.jpg}" width="100%">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img th:src="@{/images/banco-banespa.jpg}" width="100%">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

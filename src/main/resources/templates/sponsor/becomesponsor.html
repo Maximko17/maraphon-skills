@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--/*/ <th:block th:include="fragments/loginpart :: head"></th:block> /*/-->
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/runnerstyle/edit.css}"/>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/learnMore}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+</div>
+
+
+<div style="height: 35.8vw">
+    <h2 style="margin-top: 5vh">Спонсор бегуна</h2>
+    <p>
+    <h4>Пожалуйста выбирите бегуна, которому вы хотели бы спонсировать и сумму <br>
+        которую вы хотели бы спонсировать.Спасибо за вашу поддержку бегунов и их <br>
+        благотворительных учреждений.
+    </h4>
+    </p>
+    <form th:action="@{/flushSponsorMoney}" method="post" th:object="${sponsor}">
+        <div class="flex-container">
+            <div style="margin-left: 20vw">
+                <h3 style="color:#797979;">Информация о спонсоре</h3>
+                <div class="flex-container" style="margin-top: 5vh">
+
+                    <div style="text-align: right;line-height: 0.5">
+                        <h4><label>Ваше имя:</label></h4><br/>
+                        <h4><label>Бегун:</label></h4><br/>
+                        <h4><label>Карта:</label></h4><br/>
+                        <h4><label>Номер карты:</label></h4><br/>
+                        <h4><label>Срок действия:</label></h4><br/>
+                        <h4><label>CVC:</label></h4><br/>
+                    </div>
+                    <div style="text-align: left">
+                        <input type="hidden" th:field="*{id}">
+                        <input type="text" placeholder="Ваше имя" th:field="*{sponsorName}"
+                               pattern="[A-Za-zА-Яа-яЁё\s]{2,64}" required title="Разрешены только буквы "
+                               style="margin-left: 1vw"><br/>
+                        <select type="text" style="margin-top: 24px;margin-left: 1vw" name="registrations"
+                                th:field="*{registration}">
+                            <option th:each="registration : ${registrations}" th:value="${registration.id}"
+                                    th:text="${(registration.runner.email.firstName+' '+registration.runner.email.lastName)+' - '+registration.id+'('+registration.runner.countryCode+')'}"
+                                    th:attr="data-description=${registration.charity.description}, data-image=${registration.charity.fileName}, data-name=${registration.charity.name}"></option>
+                        </select><br/>
+                        <input type="text" placeholder="Владелец карты" pattern="[A-Za-zА-Яа-яЁё\s]{2,64}" required
+                               title="Разрешены только буквы" style="margin-top: 25px;margin-left: 1vw"><br/>
+                        <div style="display: inline">
+                            <input type="text" placeholder="XXXX" pattern="[0-9]{4}" title="Разрешены только цифры"
+                                   maxlength="4" style="margin-top: 25px;margin-left: 1vw;width: 4vw">
+                            <input type="text" placeholder="XXXX" pattern="[0-9]{4}" title="Разрешены только цифры"
+                                   maxlength="4" style="margin-top: 25px;margin-left: 1px;width: 4vw">
+                            <input type="text" placeholder="XXXX" pattern="[0-9]{4}" title="Разрешены только цифры"
+                                   maxlength="4" style="margin-top: 25px;margin-left: 1px;width: 4vw">
+                            <input type="text" placeholder="XXXX" pattern="[0-9]{4}" title="Разрешены только цифры"
+                                   maxlength="4" style="margin-top: 25px;margin-left: 1px;width: 4vw"><br/>
+                        </div>
+                        <div style="display: inline">
+                            <input type="text" placeholder="12" id="month" pattern="[0-9]{2}"
+                                   title="Разрешены только цифры" maxlength="2"
+                                   style="margin-top: 25px;margin-left: 1vw;width: 4vw">
+                            <input type="text" placeholder="2018" id="year" pattern="[0-9]{4}"
+                                   title="Разрешены только цифры" maxlength="4"
+                                   style="margin-top: 25px;margin-left: 1px;width: 4vw"><br/>
+                        </div>
+                        <input type="password" maxlength="3" pattern="[0-9]{3}" title="Разрешены только цифры"
+                               style="margin-top: 25px;margin-left: 1vw;width: 4vw"><br/>
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="margin-left: 10vw">
+                <h3 style="color:#797979;">Благотворительность</h3><br/>
+
+                <div class="flex-container">
+                    <h4 class="flex-one" id="fondName">Фонд кошелек</h4>
+                    <a href="#" data-toggle="modal" data-target="#myModal">
+                        <img th:src="@{/images/info.jpg}" width="20px">
+                    </a><br/>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Modal Header</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <h3 id="CharityName"></h3>
+                                    <img id="CharityImg" src="" style="width: 100%"/>
+                                    <h5 id="CharityDescr"></h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <h3 style="color:#797979;">Сумма пожертвования</h3>
+
+                <p style="font-size: 60pt;color:#797979;" id="demo">$</p>
+                <p><input type="text" th:field="*{amount}" placeholder="Сумма" required pattern="^[ 0-9]+$"
+                          title="Только цифры" maxlength="6" onkeyup="onlineUpdate()"></p>
+                <div style="margin-top: 5vh;">
+                    <button type="submit" class="btn" style="border: 1px solid" onclick="return checkYear()">Заплатить
+                    </button>
+                    <a th:href="@{/}" style="background-color: #DCDCDC;border: 1px solid #000;color: #000"
+                       class="btn btn-link">Отмена</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+
+<script>
+    $('#registration').on('change', function () {
+        var selectedOption = $(this).find('option:selected');
+        var name = $(selectedOption).attr('data-name');
+        var description = $(selectedOption).attr('data-description');
+        var image = $(selectedOption).attr('data-image');
+
+        $('#fondName').text(name);
+        $('#CharityName').text(name);
+        $('#CharityImg').attr('src', '/img/' + image);
+        $('#CharityDescr').text(description);
+    })
+</script>
+</body>
+</html>

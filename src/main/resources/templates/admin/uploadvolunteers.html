@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/coordinatorstyle/runners.css}"/>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/admin/volunteers}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="register-back" style="margin-right: 20px">Выйти</button>
+    </form>
+</div>
+
+<div class="register-middle">
+    <h2 style="margin-top: 5vh">Загрузка волонтеров</h2>
+
+    <form th:action="@{/downloadVolunteerFromCSV}" method="post" enctype="multipart/form-data"
+          style="margin-left: 35vw;margin-top: 5vh">
+        <div class="flex-container">
+            <div class="text-right">
+                <h4><label>CSV файл волнтеров:</label></h4><br>
+            </div>
+
+            <div style="margin-left: 3vw">
+                <input type="file" name="file" accept=".csv">
+            </div>
+
+        </div>
+
+        <div style="margin-top: 2vh;margin-right: 35vw;">
+            <button type="submit" class="btn" style="border: 1px solid">Сохранить</button>
+            <a th:href="@{/admin/volunteers}" style="background-color: #DCDCDC;border: 1px solid #000;color: #000"
+               class="btn btn-link">Отмена</a>
+        </div>
+    </form>
+
+    <div style="margin-top: 7vh">
+        <h4>CSV файл должен иметь следующие поля:</h4>
+        <h5>поле 1: описание поля</h5>
+        <h5>поле 2: описание поля</h5>
+        <h5>поле 3: описание поля</h5>
+        <h5>поле 4: описание поля</h5>
+        <h5>поле 5: описание поля</h5>
+    </div>
+</div>
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+
+</body>
+</html>

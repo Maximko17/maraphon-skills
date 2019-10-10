@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/runnerstyle/results.css}"/>
+</head>
+<body class="align">
+
+<div class="register-top flex-container">
+    <form th:action="@{/learnMore}">
+        <button type="submit" class="register-back">Назад</button>
+    </form>
+    <h1><b>MARATHON SKILLS 2018</b></h1>
+</div>
+
+<div style="height: 55.8vw">
+    <h2 class="title">Результаты предыдущих гонок</h2>
+
+    <form th:action="@{/sortAllRunners}" method="post" class="flex-container" style="margin-top: 5vh">
+        <div style="margin-left: 15vw">
+            <div class="flex-container">
+                <div class="text-right">
+                    <h4><label>Марафон:</label></h4><br/>
+                    <h4><label>Дистанция:</label></h4><br/>
+                </div>
+                <div style="text-align: left">
+                    <select type="text" name="year" class="input-field1">
+                        <option value="2011">2011 - Great Britain</option>
+                        <option value="2012">2012 - Vietnam</option>
+                        <option value="2013">2013 - Germany</option>
+                        <option value="2014">2014 - Japan</option>
+                        <option value="2015" selected>2015 - Brazil</option>
+                    </select><br/>
+                    <select type="text" name="distance" class="input-field">
+                        <option value="FM">42 км полный марафон</option>
+                        <option value="HM">21 км полумарафон</option>
+                        <option value="FR">5 км малая дистанция</option>
+                    </select><br/>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-left: 15vw">
+            <div class="flex-container">
+                <div class="text-right">
+                    <h4><label>Пол:</label></h4><br/>
+                    <h4><label>Категория:</label></h4><br/>
+                </div>
+                <div style="text-align: left">
+                    <select type="text" name="gender" class="input-field1" style="width: 300%">
+                        <option value="Мужчина">Мужской</option>
+                        <option value="Женщина">Женский</option>
+                    </select><br/>
+                    <select type="text" class="input-field" style="width: 300%">
+                        <option>до 18</option>
+                        <option>18-29</option>
+                        <option>30-39</option>
+                        <option>40-55</option>
+                        <option>56-70</option>
+                        <option>старше 70</option>
+                    </select><br/>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="search-button">Поиск</button>
+    </form>
+
+    <div th:if="${#lists.size(events)!=0}">
+        <h4>
+            <b th:text="${'Всего бегунов: '+#lists.size(events)}"></b> <b style="padding-left: 30px"
+                                                                          th:text="${'Всего бегунов финишировало: '+totalFinishers}"></b>
+            <b style="padding-left: 30px" th:text="${'Среднее время: '+totalTime}"></b>
+        </h4>
+        <div>
+            <table class="table table-striped table-bordered" style="width: 80vw;margin-left: 10vw;">
+                <thead style="background-color: #797979">
+                <tr>
+                    <th>Место</th>
+                    <th>Время</th>
+                    <th>Имя бегуна</th>
+                    <th>Страна</th>
+                </tr>
+                </thead>
+                <tr th:each="event : ${events}">
+                    <td th:text="${events.indexOf(event)+1}"></td>
+                    <td th:text="${event.raceTime+' сек.'}"></td>
+                    <td th:text="${(event.registration.runner.email.firstName+' '+event.registration.runner.email.lastName)}"></td>
+                    <td th:text="${event.registration.runner.countryCode}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="margin-top: 10vh;" th:unless="${#lists.size(events)!=0}">
+        <h4><b>Ничего не найдено</b></h4>
+    </div>
+</div>
+
+<div class="register-bot">
+    <h4 style="color: white" th:text="${countDown}"></h4>
+</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+body h2 {
+    color: #4a4848;
+}
+
+body h4 {
+    color: #4a4848;
+}
+
+h3 {
+    color: #4a4848;
+}
+
+.align {
+    text-align: center;
+}
+
+.register-top {
+    background-color: #6b6a6a;
+    height: 5vw;
+}
+
+.register-top h1 {
+    font-family: 'Open Sens Semibold', sans-serif;
+    color: white;
+    font-size: 30pt;
+    padding-top: 1%;
+    padding-left: 40px;
+    flex: 2;
+    padding-right: 50vw;
+}
+
+.register-back {
+    height: 5vh;
+    width: 5vw;
+    border-radius: 10px;
+    font-size: 15pt;
+    margin-top: 2vh;
+    margin-left: 20px;
+}
+
+.register-middle {
+    height: 35.8vw;
+}
+
+.register-button {
+    margin-top: 25px;
+    height: 15vh;
+    width: 40vw;
+    border-radius: 15px;
+    border-width: 1px;
+    border-color: black;
+    font-size: 25pt;
+    color: #4a4848;
+}
+
+.register-login-button {
+    margin-left: 60vw;
+    height: 5vh;
+    width: 10vw;
+    border-radius: 10px;
+    font-size: 15pt;
+    border-width: 1px;
+    border-color: black;
+    color: #4a4848;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-one {
+    flex: 1;
+}
+
+.flex-two {
+    flex: 2;
+}
+
+.span {
+    padding-top: 5vh;
+}
+
+.register-bot {
+    background-color: #6b6a6a;
+    height: 4.2vw;
+    color: white;
+    font-size: 20pt;
+    padding-top: 1%;
+}
+
+@font-face {
+    font-family: 'Open Sens Semibold';
+    src: url(/static/fonts/open-sans/OpenSans-Semibold.ttf);
+}
+
+@font-face {
+    font-family: 'Open Sens Italic';
+    src: url(/static/fonts/open-sans/OpenSans-Italic.ttf);
+}
+
+/*------------Для Главной Страницы Бегуна-----------*/
+.login-text {
+    color: #4a4848;
+    padding-top: 3vh;
+}
+
+.form-input {
+    padding-left: 33vw;
+    color: #4a4848;
+}
+
+table {
+    margin-left: 10vw;
+    margin-top: 5vh;
+}
+
+.input-field {
+    height: 40px;
+}
+
+.login-button {
+    height: 5vh;
+    width: 5vw;
+    border-radius: 10px;
+    font-size: 15pt;
+    border-width: 1px;
+    border-color: black;
+}
+
+.href {
+    text-decoration: none; /* Убираем подчёркивание */
+    height: 5vh;
+    width: 5vw;
+    border: 1px solid #000; /* Рамка */
+    border-radius: 10px;
+    display: inline-block;
+    padding: 5px 15px; /* Поля */
+    color: #000; /* Цвет текста */
+    margin-left: 10px;
+    background-color: #DCDCDC;
+}
+
+.login-middle {
+    height: 38vw;
+}
+
+.newInventoryField {
+    margin: 0;
+    padding: 0;
+    width: 102%;
+    height: 40px;
+    border: 1px;
+    border-style: solid;
+}
+
